@@ -1,6 +1,10 @@
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
+// 5dcd37f56b01563ad3f47a87
+var url_string = window.location.href //
+var url = new URL(url_string);
+var id = url.searchParams.get("id");
 
 var data = {
     suhu: 0,
@@ -21,7 +25,7 @@ sleep(1000);
 
 var datalast = new Date();
 
-axios.get('http://gradien.co:7777/api/users/5dcd37f56b01563ad3f47a87/data')
+axios.get('http://gradien.co:7777/api/users/' + id + '/data')
     .then((response) => {
         if (response.data.data.mq == false) {
             temp_gas = 0;
@@ -42,7 +46,7 @@ axios.get('http://gradien.co:7777/api/users/5dcd37f56b01563ad3f47a87/data')
 sleep(2000);
 
 function getData() {
-    axios.get('http://gradien.co:7777/api/records/5dcd37f56b01563ad3f47a87/last')
+    axios.get('http://gradien.co:7777/api/records/' + id + '/last')
         .then((response) => {
             if (response.data.data.mq == false) {
                 temp_gas = 0;
@@ -59,11 +63,11 @@ function getData() {
             data.date_str = new Date(response.data.data.created_at).toLocaleDateString('id-ID', options);
         })
         .catch((error) => {
-            console.log(error);
-            document.getElementById('app').innerHTML = '<div class="col-12"><div class="pt-4 pr-4 pl-4 text-center"><div class="alert alert-danger alert-dismissible fade show" role="alert"><strong>Menyambung Ke Server Gagal , Kemungkinan Server sedang dalam perbaikan</strong></div></div></div>';
+            console.log(error.response);
+            document.getElementById('app').innerHTML = '<div class="col-12"><div class="pt-4 pr-4 pl-4 text-center"><div class="alert alert-danger alert-dismissible fade show" role="alert"><strong>Gagal Menyambung Ke Server</strong></div></div></div>';
         });
 
-    axios.get('http://gradien.co:7777/api/users/5dcd37f56b01563ad3f47a87/data')
+    axios.get('http://gradien.co:7777/api/users/' + id + '/data')
         .then((response) => {
             data.nama = response.data.data.nama;
             data.relay_name = response.data.data.relay_name;
@@ -73,7 +77,7 @@ function getData() {
             data.interval = response.data.data.interval;
         })
         .catch((error) => {
-            console.log(error);
+            console.log(error.response);
         });
 
     return data;
@@ -129,6 +133,9 @@ Plotly.plot('custome', [{
 }], { title: "Grafik Gabungan" });
 
 var cnt = 0;
+var relay_1 = './asset/img/off.jpg';
+var relay_2 = './asset/img/off.jpg';
+var relay_3 = './asset/img/off.jpg';
 setInterval(function() {
     data = getData();
     console.log(data);
@@ -140,9 +147,10 @@ setInterval(function() {
     document.getElementById("relay1").innerHTML = data.relay_name[0];
     document.getElementById("relay2").innerHTML = data.relay_name[1];
     document.getElementById("relay3").innerHTML = data.relay_name[2];
-    let relay_1 = './asset/img/off.jpg';
-    let relay_2 = './asset/img/off.jpg';
-    let relay_3 = './asset/img/off.jpg';
+
+    relay_1 = './asset/img/off.jpg';
+    relay_2 = './asset/img/off.jpg';
+    relay_3 = './asset/img/off.jpg';
     if (data.relay1 == true) {
         relay_1 = './asset/img/on.jpg';
     }
@@ -152,9 +160,9 @@ setInterval(function() {
     if (data.relay3 == true) {
         relay_3 = './asset/img/on.jpg';
     }
-    document.getElementById("relay1status").src = relay1;
-    document.getElementById("relay2status").src = relay2;
-    document.getElementById("relay3status").src = relay3;
+    document.getElementById("relay1status").src = relay_1;
+    document.getElementById("relay2status").src = relay_2;
+    document.getElementById("relay3status").src = relay_3;
 
     document.getElementById("nama").innerHTML = data.nama;
     //=================================================

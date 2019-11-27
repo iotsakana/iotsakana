@@ -5,7 +5,9 @@ function sleep(ms) {
 var url_string = window.location.href //
 var url = new URL(url_string);
 var id = url.searchParams.get("id");
-
+if (id == undefined) {
+    id = '5dcd37f56b01563ad3f47a87';
+}
 var data = {
     suhu: 0,
     gas: 0,
@@ -21,10 +23,7 @@ var data = {
 };
 
 var datenow = new Date();
-sleep(1000);
-
 var datalast = new Date();
-
 axios.get('http://gradien.co:7777/api/users/' + id + '/data')
     .then((response) => {
         if (response.data.data.mq == false) {
@@ -41,6 +40,25 @@ axios.get('http://gradien.co:7777/api/users/' + id + '/data')
     })
     .catch((error) => {
         console.log(error);
+    });
+axios.get('http://gradien.co:7777/api/records/' + id + '/last')
+    .then((response) => {
+        if (response.data.data.mq == false) {
+            temp_gas = 0;
+        } else {
+            temp_gas = 1;
+        }
+        const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit', timeZoneName: 'long' };
+        const options2 = { day: 'numeric', month: 'long', year: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit' };
+        data.suhu = response.data.data.suhu;
+        data.gas = temp_gas;
+        data.ph = response.data.data.ph;
+        data.date = new Date(response.data.data.created_at).toLocaleDateString('id-ID', options2);
+        data.date_str = new Date(response.data.data.created_at).toLocaleDateString('id-ID', options);
+    })
+    .catch((error) => {
+        console.log(error.response);
+        document.getElementById('app').innerHTML = '<div class="col-12"><div class="pt-4 pr-4 pl-4 text-center"><div class="alert alert-danger alert-dismissible fade show" role="alert"><strong>Gagal Menyambung Ke Server</strong></div></div></div>';
     });
 
 sleep(2000);

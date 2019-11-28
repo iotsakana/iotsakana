@@ -26,6 +26,32 @@ var data = {
 var datenow = new Date();
 var datalast = new Date();
 
+if (navigator.userAgent.match(/iPhone/i)) {
+    document.getElementById('smartphone').innerHTML = ` 
+    <div>
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            <strong>Hai!</strong> Jika Menggunakan Smartphone Gunakan Mode Landscape / Miring 
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    </div>`;
+}
+
+
+if (navigator.userAgent.match(/Android/i)) {
+    document.getElementById('smartphone').innerHTML = `
+    <div>
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            <strong>Hai!</strong> Jika Menggunakan Smartphone Gunakan Mode Landscape / Miring
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    </div>`;
+}
+
+
 axios.get('https://gradien.co:7777/api/telegram/' + id + "")
     .then((response) => {
         if (response.data.data.gas == false) {
@@ -48,11 +74,11 @@ axios.get('https://gradien.co:7777/api/telegram/' + id + "")
         data.interval_name = response.data.data.interval_name;
         if (response.data.data.msg != null) {
             clearInterval(interval);
-            document.getElementById('app').innerHTML = ' <div class="pt-4 pl-2 pr-2 pb-4"></div><div class="col-12"><div class="pt-4 pr-4 pl-4 text-center"><div class="alert alert-danger alert-dismissible fade show" role="alert"><strong>Gagal Menyambung Ke Server</strong></div></div></div>';
+            document.getElementById('app').innerHTML = ' <div class="pt-4 pl-2 pr-2 pb-4"></div><div class="col-12"><div class="pt-4 text-center"><div class="alert alert-danger alert-dismissible fade show" role="alert"><strong>Gagal Menyambung Ke Server, Pastikan Jaringan internet anda aktif </strong></div></div></div>';
         }
     })
     .catch((error) => {
-        document.getElementById('app').innerHTML = ' <div class="pt-4 pl-2 pr-2 pb-4"></div><div class="col-12"><div class="pt-4 pr-4 pl-4 text-center"><div class="alert alert-danger alert-dismissible fade show" role="alert"><strong>Gagal Menyambung Ke Server</strong></div></div></div>';
+        document.getElementById('app').innerHTML = ' <div class="pt-4 pl-2 pr-2 pb-4"></div><div class="col-12"><div class="pt-4text-center"><div class="alert alert-danger alert-dismissible fade show" role="alert"><strong>Gagal Menyambung Ke Internet</strong></div></div></div>';
     });
 
 function getData() {
@@ -79,7 +105,7 @@ function getData() {
             data.interval_name = response.data.data.interval_name;
         })
         .catch((error) => {
-            document.getElementById('app').innerHTML = ' <div class="pt-4 pl-2 pr-2 pb-4"></div><div class="col-12"><div class="pt-4 pr-4 pl-4 text-center"><div class="alert alert-danger alert-dismissible fade show" role="alert"><strong>Gagal Menyambung Ke Server</strong></div></div></div>';
+            document.getElementById('app').innerHTML = ' <div class="pt-4 pl-2 pr-2 pb-4"></div><div class="col-12"><div class="pt-4 text-center"><div class="alert alert-danger alert-dismissible fade show" role="alert"><strong>Gagal Menyambung Ke Internet</strong> </div></div></div>';
         });
     return data;
 }

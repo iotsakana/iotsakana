@@ -42,9 +42,9 @@ axios.get('https://gradien.co:7777/api/telegram/' + id + "")
         data.date_str = new Date(response.data.data.created_at).toLocaleDateString('id-ID', options);
         data.nama = response.data.data.nama;
         data.relay_name = response.data.data.relay_name;
-        data.relay1 = response.data.data.relay_1;
-        data.relay2 = response.data.data.relay_2;
-        data.relay3 = response.data.data.relay_3;
+        data.relay1 = response.data.data.relay1;
+        data.relay2 = response.data.data.relay2;
+        data.relay3 = response.data.data.relay3;
         data.interval_name = response.data.data.interval_name;
         if (response.data.data.msg != null) {
             clearInterval(interval);
@@ -65,6 +65,7 @@ function getData() {
             }
             const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit', timeZoneName: 'long' };
             const options2 = { day: 'numeric', month: 'long', year: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit' };
+            console.log(response);
             data.suhu = response.data.data.suhu;
             data.gas = temp_gas;
             data.ph = response.data.data.ph;
@@ -72,9 +73,9 @@ function getData() {
             data.date_str = new Date(response.data.data.created_at).toLocaleDateString('id-ID', options);
             data.nama = response.data.data.nama;
             data.relay_name = response.data.data.relay_name;
-            data.relay1 = response.data.data.relay_1;
-            data.relay2 = response.data.data.relay_2;
-            data.relay3 = response.data.data.relay_3;
+            data.relay1 = response.data.data.relay1;
+            data.relay2 = response.data.data.relay2;
+            data.relay3 = response.data.data.relay3;
             data.interval_name = response.data.data.interval_name;
         })
         .catch((error) => {
@@ -138,6 +139,7 @@ var relay_3 = './asset/img/off.jpg';
 
 var interval = setInterval(function() {
     data = getData();
+    console.log(data);
     document.getElementById("date-custome1").innerHTML = data.date_str;
     document.getElementById("date-custome2").innerHTML = data.date_str;
     document.getElementById("date-custome3").innerHTML = data.date_str;
@@ -146,22 +148,22 @@ var interval = setInterval(function() {
     document.getElementById("relay1").innerHTML = data.relay_name[0];
     document.getElementById("relay2").innerHTML = data.relay_name[1];
     document.getElementById("relay3").innerHTML = data.relay_name[2];
-   
-    if (data.relay1 == true) {
+    if (data.relay1 == true || data.relay1 == 1) {
         relay_1 = './asset/img/on.jpg';
-    } else if (data.relay1 == false) {
+    } else if (data.relay1 == false || data.relay1 == 0) {
         relay_1 = './asset/img/off.jpg';
     }
-    if (data.relay2 == true) {
+    if (data.relay2 == true || data.relay1 == 1) {
         relay_2 = './asset/img/on.jpg';
-    } else if (data.relay2 == false) {
+    } else if (data.relay2 == false || data.relay3 == 0) {
         relay_2 = './asset/img/off.jpg';
     }
-    if (data.relay3 == true) {
+    if (data.relay3 == true || data.relay1 == 1) {
         relay_3 = './asset/img/on.jpg';
-    } else if (data.relay3 == false) {
+    } else if (data.relay3 == false || data.relay3 == 0) {
         relay_3 = './asset/img/off.jpg';
     }
+
     document.getElementById("relay1status").src = relay_1;
     document.getElementById("relay2status").src = relay_2;
     document.getElementById("relay3status").src = relay_3;

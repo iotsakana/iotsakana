@@ -148,25 +148,26 @@ var interval = setInterval(function() {
     document.getElementById("relay1").innerHTML = data.relay_name[0];
     document.getElementById("relay2").innerHTML = data.relay_name[1];
     document.getElementById("relay3").innerHTML = data.relay_name[2];
-    if (data.relay1 == true || data.relay1 == 1) {
+    if (data.relay1 == true) {
         relay_1 = './asset/img/on.jpg';
-    } else if (data.relay1 == false || data.relay1 == 0) {
+    } else {
         relay_1 = './asset/img/off.jpg';
     }
-    if (data.relay2 == true || data.relay1 == 1) {
+    if (data.relay2 == true) {
         relay_2 = './asset/img/on.jpg';
-    } else if (data.relay2 == false || data.relay3 == 0) {
+    } else {
         relay_2 = './asset/img/off.jpg';
     }
-    if (data.relay3 == true || data.relay1 == 1) {
+    if (data.relay3 == true) {
         relay_3 = './asset/img/on.jpg';
-    } else if (data.relay3 == false || data.relay3 == 0) {
+    } else {
         relay_3 = './asset/img/off.jpg';
     }
 
     document.getElementById("relay1status").src = relay_1;
     document.getElementById("relay2status").src = relay_2;
     document.getElementById("relay3status").src = relay_3;
+
     document.getElementById("intervalstatus").innerHTML = data.interval_name;
     document.getElementById("nama").innerHTML = '<button class="btn btn-outline-success my-2 my-sm-0" type="submit" disabled>' + data.nama + '</button>';
     //=================================================

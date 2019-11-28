@@ -5,7 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Real Time Monitor</title>
+    <meta author="Ardi Ragil Saputra">
+    <title>Real Time Monitor （魚）</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
@@ -15,8 +16,8 @@
 </head>
 
 <body class="d-flex flex-column h-100">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light shadow">
-        <a class="navbar-brand" href="#">Sakana IOT </a>
+    <nav class="navbar navbar-expand-lg navbar-light  fixed-top bg-light shadow">
+        <a class="navbar-brand" href="#">Sakana IoT（魚IoT）</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -24,111 +25,143 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">Home <span class="sr-only"></span></a>
+                    <a class="nav-link" href="#costumeTitle">Kolam <span class="sr-only"></span></a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="#phTitle">PH <span class="sr-only"></span></a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="#suhuTitle">Suhu <span class="sr-only"></span></a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="#gasTitle">Belerang <span class="sr-only"></span></a>
                 </li>
             </ul>
-            <a href="#"><button class="btn btn-outline-success my-2 my-sm-0" type="submit" id="nama"></button></a>
+            <a href="#">
+                <div id="nama"></div>
+            </a>
         </div>
     </nav>
 
     <div class="container-fluid bg-light">
         <div class="row" id="app">
             <div class="col-lg-12 col-md-12 col-xs-12">
-                <div class="pt-2 pl-2 pr-2 pb-3">
-                    <div class="card shadow  ">
-                        <div class="card-header text-center">
-                            <div class="row">
-                                <div class="col-4 row text-center">
-                                    <div id="relay1" class="col-6 h4">Relay 1</div>
-                                    <div class="pl-4 col-6"><img id="relay1status" src="./asset/img/off.jpg" width="100" /></div>
+                <div class="pt-4 pl-2 pr-2 pb-4">
+                </div>
+                <div class="pt-4 pl-2 pr-2 pb-3">
+                    <div class="row">
+                        <div class="col-xl-3 col-lg-3 col-md-6 col-xs-12 pr-2 pl-2">
+                            <div class="card shadow rounded ">
+                                <div class="card-header text-center row">
+                                    <div id="relay1" class="col-xl-7 col-lg-12 col-md-6 col-xs-12 h4">Relay 1</div>
+                                    <div class="pl-4 col-xl-5 col-lg-12 col-md-6 col-xs-12"><img id="relay1status" src="./asset/img/off.jpg" width="100" /></div>
                                 </div>
-                                <div class="col-4 row text-center">
-                                    <div id="relay2" class="col-6 h4">Relay 2</div>
-                                    <div class="pl-4 col-6"><img id="relay2status" src="./asset/img/off.jpg" width="100" /></div>
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-lg-3 col-md-6 col-xs-12 pr-2 pl-2">
+                            <div class="card shadow rounded ">
+                                <div class="card-header text-center row">
+                                    <div id="relay2" class="col-xl-7 col-lg-12 col-md-6 col-xs-8 h4">Relay 2</div>
+                                    <div class="pl-4  col-xl-5 col-lg-12 col-md-6 col-xs-4"><img id="relay2status" src="./asset/img/off.jpg" width="100" /></div>
                                 </div>
-                                <div class="col-4 row text-center">
-                                    <div id="relay3" class="col-6 h4">Relay 3</div>
-                                    <div class="pl-4 col-6"><img id="relay3status" src="./asset/img/off.jpg" width="100" /></div>
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-lg-3 col-md-6 col-xs-12 pr-2 pl-2">
+                            <div class="card shadow rounded ">
+                                <div class="card-header text-center row">
+                                    <div id="relay3" class="col-xl-7 col-lg-12 col-md-6 col-xs-6 h4">Relay 3</div>
+                                    <div class="pl-4  col-xl-5 col-lg-12 col-md-6 col-xs-6"><img id="relay3status" src="./asset/img/off.jpg" width="100" /></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-lg-3 col-md-6 col-xs-12 pr-2 pl-2">
+                            <div class="card shadow rounded ">
+                                <div class="card-header text-center row">
+                                    <div id="relay3" class="col-xl-6 col-lg-12 col-md-6 col-xs-6 h4">Notifikasi</div>
+                                    <div class="pl-4 col-xl-6 col-lg-12 col-md-6 col-xs-6 h4">(<span id="intervalstatus">1 Jam</span>)</div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-lg-12 col-md-12 col-xs-12 pr-4 pl-4" id="notif"></div>
-            <div class="col-lg-12 col-md-12 col-xs-12">
-                <div class="pt-1 pl-2 pr-2 pb-2">
-                    <div class="card shadow bg-info text-white ">
-                        <div class="card-header text-center">
-                            <strong>Kolam</strong>
-                        </div>
-                        <div class=" ">
-                            <div id="custome"></div>
-                        </div>
-                        <div class="card-footer row">
-                            <div class="col-xl-6 " id="date-custome1"></div>
-                            <div class="col-xl-6 text-right">Real Time Monitor Gabungan</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-12 col-md-6 col-xs-12">
-                <div class="p-2">
-                    <div class="card shadow bg-success text-white">
-                        <div class="card-header text-center">
-                            <strong>Sensor PH</strong>
-                        </div>
-                        <div class="">
-                            <div id="ph"></div>
-                        </div>
-                        <div class="card-footer  row">
-                            <div class="col-xl-6 " id="date-custome2"></div>
-                            <div class="col-xl-6 text-right">Real Time Monitor PH Air</div>
+                <div class="col-lg-12 col-md-12 col-xs-12" id="notif"></div>
+                <div class="col-lg-12 col-md-12 col-xs-12">
+                    <div class="">
+                        <div class="card shadow bg-info text-white " id="customeTitle">
+                            <div class="card-header text-center">
+                                <strong>Kolam</strong>
+                            </div>
+                            <div class=" ">
+                                <div id="custome"></div>
+                            </div>
+                            <div class="card-footer text-center row">
+                                <div class="col-xl-6 " id="date-custome1"></div>
+                                <div class="col-xl-6 ">Real Time Monitor Gabungan</div>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-lg-12 col-md-6 col-xs-12">
-                <div class="p-2">
-                    <div class="card shadow bg-warning ">
-                        <div class="card-header text-center">
-                            <strong> Sensor Suhu</strong>
-                        </div>
-                        <div class="">
-                            <div id="suhu"></div>
-                        </div>
-                        <div class="card-footer row">
-                            <div class="col-xl-6 " id="date-custome3"></div>
-                            <div class="col-xl-6 text-right">Real Time Monitor Suhu Air</div>
+                <div class="col-lg-12 col-md-12 col-xs-12">
+                    <div class="pt-2 pb-2">
+                        <div class="card shadow bg-success text-white" id="phTitle">
+                            <div class="card-header text-center">
+                                <strong>Sensor PH</strong>
+                            </div>
+                            <div class="">
+                                <div id="ph"></div>
+                            </div>
+                            <div class="card-footer text-center row">
+                                <div class="col-xl-6 " id="date-custome2"></div>
+                                <div class="col-xl-6 ">Real Time Monitor PH Air</div>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-lg-12 col-md-6 col-xs-12">
-                <div class="p-2">
-                    <div class="card text-white bg-danger shadow">
-                        <div class="card-header text-center">
-                            <strong> Sensor Gas Belerang</strong>
+                <div class="col-lg-12 col-md-12 col-xs-12">
+                    <div class="pt-2 pb-2">
+                        <div class="card shadow bg-warning " id="suhuTitle">
+                            <div class="card-header text-center">
+                                <strong> Sensor Suhu</strong>
+                            </div>
+                            <div class="">
+                                <div id="suhu"></div>
+                            </div>
+                            <div class="card-footer row text-center">
+                                <div class="col-xl-6 " id="date-custome3"></div>
+                                <div class="col-xl-6 ">Real Time Monitor Suhu Air</div>
+                            </div>
                         </div>
-                        <div class="">
-                            <div id="gas"></div>
-                        </div>
-                        <div class="card-footer row">
-                            <div class="col-xl-6 " id="date-custome4"></div>
-                            <div class="col-xl-6 text-right">Real Time Monitor Gas Belerang</div>
+                    </div>
+                </div>
+                <div class="col-lg-12 col-md-12 col-xs-12">
+                    <div class="pt-2 pb-2">
+                        <div class="card text-white bg-danger shadow " id="gasTitle">
+                            <div class="card-header text-center">
+                                <strong> Sensor Gas Belerang</strong>
+                            </div>
+                            <div class="">
+                                <div id="gas"></div>
+                            </div>
+                            <div class="card-footer row text-center">
+                                <div class="col-xl-6 " id="date-custome4"></div>
+                                <div class="col-xl-6 ">Real Time Monitor Gas Belerang</div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
 
-    <footer class="footer py-3 shadow">
-        <div class="container">
-            <span class="text-muted">&copy; 2019 (Project Teknologi Informasi & Internet of Things) Ardi, Ery, Hasan, Joni</span>
-        </div>
-    </footer>
-    <script src="./asset/js/ph.js"></script>
+        <footer class="footer py-3 shadow">
+            <div class="container text-center">
+                <span class="text-muted ">
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-xs-12 ">Created By : <a href="https://api.whatsapp.com/send?phone=+6282282418992">Ardi R Saputra</a>, <a href="https://api.whatsapp.com/send?phone=+6281958323979"> Ery Setiawan</a>, <a href="https://api.whatsapp.com/send?phone=+6281958323979">M.N.Hasanuddin</a>, <a href="https://api.whatsapp.com/send?phone=+6281958323979">Joni Setiawan</a></div>
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-xs-12">Supported By : <a href="http://gradien.co"><img src="https://gradien.co/images/gradien.png" alt="logo gradien" width="30px"/> Gradien</a> , <a href="http://github.com"><img src="https://github.githubassets.com/pinned-octocat.svg" alt="logo github" width="30px"/> Github</a>, <a href="http://unila.ac.id"> <img src="https://www.unila.ac.id/wp-content/uploads/2018/03/ICO-LOGO-WEBSITE-UNILA-IDN-2018-5.png" alt="logo universitas lampung" width="30px"/> Universitas Lampung</a></div>
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-xs-12 "> &copy; 2019 (Technology Information Project & Internet of Things)</div>
+                </span>
+            </div>
+        </footer>
+        <script src="./asset/js/ph.js"></script>
 </body>
 
-</html
+</html>

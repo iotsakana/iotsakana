@@ -13,6 +13,8 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/plotly.js/1.33.1/plotly.min.js" integrity="sha256-6izTmaU3LMinmbxDDcolK51XCh0s0TTREyeZXq335Nc=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js" integrity="sha256-S1J4GVHHDMiirir9qsXWc8ZWw74PHHafpsHp5PXtjTs=" crossorigin="anonymous"></script>
+    <style src="./asset/css/style.css"></style>
+
 </head>
 
 <body class="d-flex flex-column h-100">
@@ -47,8 +49,8 @@
         <div class="row" id="app">
             <div class="col-lg-12 col-md-12 col-sm-12">
                 <div class="pl-2 pr-2 pb-4 pt-3 row">
-                    <img class="" src="./asset/img/off.jpg" width="1" />
-                    <img class=" " src="./asset/img/on.jpg" width="1" />
+                    <img id="tempimg1" class="" src="./asset/img/off.jpg" width="1" />
+                    <img id="tempimg2" class="" src="./asset/img/on.jpg" width="1" />
                 </div>
                 <div class="pt-4 pl-2 pr-2 pb-3">
                     <div class="row">
@@ -85,6 +87,8 @@
                             </div>
                         </div>
                     </div>
+                </div>
+                <div id="smartphone" class="col-lg-12 col-md-12 col-sm-12">
                 </div>
                 <div class="col-lg-12 col-md-12 col-sm-12" id="notif"></div>
                 <div class="col-lg-12 col-md-12 col-sm-12">

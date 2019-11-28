@@ -146,10 +146,7 @@ var interval = setInterval(function() {
     document.getElementById("relay1").innerHTML = data.relay_name[0];
     document.getElementById("relay2").innerHTML = data.relay_name[1];
     document.getElementById("relay3").innerHTML = data.relay_name[2];
-
-    relay_1 = './asset/img/off.jpg';
-    relay_2 = './asset/img/off.jpg';
-    relay_3 = './asset/img/off.jpg';
+   
     if (data.relay1 == true) {
         relay_1 = './asset/img/on.jpg';
     } else if (data.relay1 == false) {
@@ -158,12 +155,12 @@ var interval = setInterval(function() {
     if (data.relay2 == true) {
         relay_2 = './asset/img/on.jpg';
     } else if (data.relay2 == false) {
-        relay_1 = './asset/img/off.jpg';
+        relay_2 = './asset/img/off.jpg';
     }
     if (data.relay3 == true) {
         relay_3 = './asset/img/on.jpg';
     } else if (data.relay3 == false) {
-        relay_1 = './asset/img/off.jpg';
+        relay_3 = './asset/img/off.jpg';
     }
     document.getElementById("relay1status").src = relay_1;
     document.getElementById("relay2status").src = relay_2;

@@ -91,7 +91,6 @@ function getData() {
             }
             const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit', timeZoneName: 'long' };
             const options2 = { day: 'numeric', month: 'long', year: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit' };
-            console.log(response);
             data.suhu = response.data.data.suhu;
             data.gas = temp_gas;
             data.ph = response.data.data.ph;
@@ -165,7 +164,6 @@ var relay_3 = './asset/img/off.jpg';
 
 var interval = setInterval(function() {
     data = getData();
-    console.log(data);
     document.getElementById("date-custome1").innerHTML = data.date_str;
     document.getElementById("date-custome2").innerHTML = data.date_str;
     document.getElementById("date-custome3").innerHTML = data.date_str;
